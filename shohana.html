@@ -1,0 +1,1524 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شحنة اكسبريس | Shohna Express</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #FF6B35;
+            --primary-dark: #E85A2D;
+            --secondary: #004E89;
+            --accent: #1A659E;
+            --dark: #0F172A;
+            --light: #F8FAFC;
+            --gray: #64748B;
+            --success: #10B981;
+            --warning: #F59E0B;
+            --gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: var(--light);
+            color: var(--dark);
+            overflow-x: hidden;
+            transition: all 0.3s ease;
+        }
+
+        body.ltr {
+            font-family: 'Poppins', sans-serif;
+            direction: ltr;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1rem 5%;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 0.5rem 5%;
+            background: rgba(255, 255, 255, 0.98);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 800;
+            font-size: 1.5rem;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--primary);
+            transition: width 0.3s;
+            border-radius: 2px;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .lang-toggle {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .lang-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(255, 107, 53, 0.3);
+        }
+
+        .login-btn {
+            background: transparent;
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .login-btn:hover {
+            background: var(--secondary);
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            text-align: center;
+            color: white;
+            z-index: 1;
+            max-width: 900px;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(255, 107, 53, 0.5);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Floating Cards */
+        .floating-cards {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .float-card {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 1.5rem;
+            color: white;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .float-card:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .float-card:nth-child(2) {
+            top: 60%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .float-card:nth-child(3) {
+            bottom: 20%;
+            left: 15%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .experience-badge {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            background: var(--gradient);
+            color: white;
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+        }
+
+        .experience-badge h3 {
+            font-size: 2.5rem;
+            font-weight: 800;
+        }
+
+        .about-content h3 {
+            font-size: 2rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        .about-content p {
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .features-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--dark);
+            font-weight: 600;
+        }
+
+        .feature-item i {
+            color: var(--success);
+            font-size: 1.2rem;
+        }
+
+        /* Services */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: white;
+            font-size: 2rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .service-card p {
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-info {
+            background: var(--gradient);
+            padding: 3rem;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .contact-info h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info p {
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-item i {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .contact-form {
+            padding: 3rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #E2E8F0;
+            border-radius: 10px;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: var(--gradient);
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Feedback Section */
+        .feedback-section {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 30px;
+            margin: 0 5% 5rem;
+            max-width: none;
+        }
+
+        .feedback-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .tab-btn {
+            padding: 1rem 2rem;
+            border: none;
+            background: white;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .tab-btn.active {
+            background: var(--gradient);
+            color: white;
+        }
+
+        .feedback-form {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Login Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal.active {
+            display: flex;
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 450px;
+            position: relative;
+            animation: slideUp 0.3s;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .close-modal:hover {
+            background: #F1F5F9;
+            color: var(--dark);
+        }
+
+        .modal-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .modal-header h2 {
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-header p {
+            color: var(--gray);
+        }
+
+        .social-login {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-btn {
+            flex: 1;
+            padding: 0.8rem;
+            border: 2px solid #E2E8F0;
+            background: white;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .social-btn:hover {
+            border-color: var(--primary);
+            background: #FFF7ED;
+        }
+
+        .divider {
+            text-align: center;
+            margin: 1.5rem 0;
+            position: relative;
+            color: var(--gray);
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 45%;
+            height: 1px;
+            background: #E2E8F0;
+        }
+
+        .divider::before { left: 0; }
+        .divider::after { right: 0; }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 5% 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .footer-col p {
+            opacity: 0.8;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.6;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark);
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-grid,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .experience-badge {
+                right: 20px;
+                bottom: -10px;
+            }
+
+            .features-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--dark);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transform: translateX(400px);
+            transition: transform 0.3s;
+            z-index: 3000;
+        }
+
+        .toast.show {
+            transform: translateX(0);
+        }
+
+        .toast.success {
+            background: var(--success);
+        }
+
+        /* Loading Animation */
+        .loader {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+            margin-left: 10px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .submit-btn.loading .loader {
+            display: inline-block;
+        }
+
+        .submit-btn.loading .btn-text {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <!-- <i class="fas fa-shipping-fast"></i> -->
+                    <img src="./logo.PNG" alt="" style="max-width:100%">
+                </div>
+                <span data-ar="شحنة اكسبريس" data-en="Shohna Express">شحنة اكسبريس</span>
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="#home" data-ar="الرئيسية" data-en="Home">الرئيسية</a></li>
+                <li><a href="#about" data-ar="عن شحنة" data-en="About Shohna">عن شحنة</a></li>
+                <li><a href="#services" data-ar="خدماتنا" data-en="Services">خدماتنا</a></li>
+                <li><a href="#contact" data-ar="تواصل معنا" data-en="Contact Us">تواصل معنا</a></li>
+                <li><a href="#feedback" data-ar="مقترحات وشكاوي" data-en="Feedback">مقترحات وشكاوي</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button class="lang-toggle" onclick="toggleLanguage()">
+                    <i class="fas fa-globe"></i>
+                    <span id="langText">English</span>
+                </button>
+                <button class="login-btn" onclick="openModal()">
+                    <i class="fas fa-user"></i>
+                    <span data-ar="تسجيل الدخول" data-en="Login">تسجيل الدخول</span>
+                </button>
+            </div>
+
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="floating-cards">
+            <div class="float-card">
+                <i class="fas fa-clock fa-2x"></i>
+                <p data-ar="توصيل سريع" data-en="Fast Delivery">توصيل سريع</p>
+            </div>
+            <div class="float-card">
+                <i class="fas fa-shield-alt fa-2x"></i>
+                <p data-ar="آمن 100%" data-en="100% Safe">آمن 100%</p>
+            </div>
+            <div class="float-card">
+                <i class="fas fa-headset fa-2x"></i>
+                <p data-ar="دعم 24/7" data-en="24/7 Support">دعم 24/7</p>
+            </div>
+        </div>
+        
+        <div class="hero-content">
+            <h1 data-ar="شحنة اكسبريس" data-en="Shohna Express">شحنة اكسبريس</h1>
+            <p data-ar="أسرع خدمة شحن في مصر. نوصل شحنتك بأمان وفي الوقت المحدد إلى أي مكان." 
+               data-en="The fastest shipping service in Egypt. We deliver your shipment safely and on time to anywhere.">
+                أسرع خدمة شحن في مصر. نوصل شحنتك بأمان وفي الوقت المحدد إلى أي مكان.
+            </p>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn-primary">
+                    <i class="fas fa-paper-plane"></i>
+                    <span data-ar="ابدأ الآن" data-en="Start Now">ابدأ الآن</span>
+                </a>
+                <a href="#about" class="btn-secondary">
+                    <span data-ar="اعرف أكثر" data-en="Learn More">اعرف أكثر</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="section-title">
+            <h2 data-ar="عن شحنة اكسبريس" data-en="About Shohna Express">عن شحنة اكسبريس</h2>
+            <p data-ar="نحن نقدم حلول شحن متكاملة للأفراد والشركات" 
+               data-en="We provide comprehensive shipping solutions for individuals and businesses">
+                نحن نقدم حلول شحن متكاملة للأفراد والشركات
+            </p>
+        </div>
+
+        <div class="about-grid">
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800" alt="Shipping">
+                <div class="experience-badge">
+                    <h3>+6</h3>
+                    <p data-ar="سنوات خبرة" data-en="Years Experience">سنوات خبرة</p>
+                </div>
+            </div>
+            
+            <div class="about-content">
+                <h3 data-ar="شريكك الموثوق في الشحن" data-en="Your Trusted Shipping Partner">شريكك الموثوق في الشحن</h3>
+                <p data-ar="تأسست شحنة اكسبريس في عام 2026 بهدف تغيير مفهوم الشحن في مصر. نحن نؤمن بأن كل شحنة تحمل قيمة وثقة، ولذلك نعمل بجد لضمان وصولها بأمان وفي الوقت المحدد."
+                   data-en="Shohna Express was founded in 2014 with the goal of changing the concept of shipping in Egypt. We believe every shipment carries value and trust, so we work hard to ensure it arrives safely and on time.">
+                    تأسست شحنة اكسبريس في عام 2026 بهدف تغيير مفهوم الشحن في مصر. نحن نؤمن بأن كل شحنة تحمل قيمة وثقة، ولذلك نعمل بجد لضمان وصولها بأمان وفي الوقت المحدد.
+                </p>
+                
+                <div class="features-list">
+                    <div class="feature-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span data-ar="تغطية 27 محافظة" data-en="Covering 27 governorates">تغطية 27 محافظة</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span data-ar="أكثر من 200 ألف عملية توصيل" data-en="Over 200k deliveries">أكثر من 200 ألف عملية توصيل</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span data-ar="نسبة رضا 99%" data-en="99% satisfaction rate">نسبة رضا 99%</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span data-ar="فريق من 50+ موظف" data-en="Team of 50+ employees">فريق من 50+ موظف</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" style="background: #F8FAFC; border-radius: 30px; margin: 0 5% 5rem;">
+        <div class="section-title">
+            <h2 data-ar="خدماتنا" data-en="Our Services">خدماتنا</h2>
+            <p data-ar="حلول شحن متنوعة تلبي جميع احتياجاتك" 
+               data-en="Diverse shipping solutions to meet all your needs">
+                حلول شحن متنوعة تلبي جميع احتياجاتك
+            </p>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-shipping-fast"></i>
+                </div>
+                <h3 data-ar="الشحن السريع" data-en="Express Shipping">الشحن السريع</h3>
+                <p data-ar="توصيل في نفس اليوم أو اليوم التالي للمحافظات الرئيسية"
+                   data-en="Same day or next day delivery for major cities">
+                    توصيل في نفس اليوم أو اليوم التالي للمحافظات الرئيسية
+                </p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-box"></i>
+                </div>
+                <h3 data-ar="الشحن المنتظم" data-en="Standard Shipping">الشحن المنتظم</h3>
+                <p data-ar="خدمة اقتصادية للشحنات غير العاجلة مع تتبع مستمر"
+                   data-en="Economical service for non-urgent shipments with continuous tracking">
+                    خدمة اقتصادية للشحنات غير العاجلة مع تتبع مستمر
+                </p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-warehouse"></i>
+                </div>
+                <h3 data-ar="التخزين والتوزيع" data-en="Warehousing & Distribution">التخزين والتوزيع</h3>
+                <p data-ar="حلول لوجستية متكاملة للشركات والمتاجر الإلكترونية"
+                   data-en="Integrated logistics solutions for companies and e-commerce">
+                    حلول لوجستية متكاملة للشركات والمتاجر الإلكترونية
+                </p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-undo"></i>
+                </div>
+                <h3 data-ar="الإرجاع والاستبدال" data-en="Returns & Exchange">الإرجاع والاستبدال</h3>
+                <p data-ar="خدمة إرجاع سهلة ومجانية للمتاجر الإلكترونية"
+                   data-en="Easy and free return service for e-commerce">
+                    خدمة إرجاع سهلة ومجانية للمتاجر الإلكترونية
+                </p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-money-bill-wave"></i>
+                </div>
+                <h3 data-ar="التحصيل النقدي" data-en="Cash on Delivery">التحصيل النقدي</h3>
+                <p data-ar="تحصيل قيمة الشحنات نقداً وتحويلها في أسرع وقت"
+                   data-en="Collect shipment value in cash and transfer it quickly">
+                    تحصيل قيمة الشحنات نقداً وتحويلها في أسرع وقت
+                </p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h3 data-ar="تتبع الشحنات" data-en="Shipment Tracking">تتبع الشحنات</h3>
+                <p data-ar="تتبع شحنتك لحظة بلحظة عبر الموقع أو تطبيق الجوال"
+                   data-en="Track your shipment moment by moment via website or mobile app">
+                    تتبع شحنتك لحظة بلحظة عبر الموقع أو تطبيق الجوال
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="section-title">
+            <h2 data-ar="تواصل معنا" data-en="Contact Us">تواصل معنا</h2>
+            <p data-ar="نحن هنا لمساعدتك على مدار الساعة" 
+               data-en="We are here to help you 24/7">
+                نحن هنا لمساعدتك على مدار الساعة
+            </p>
+        </div>
+
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3 data-ar="معلومات التواصل" data-en="Contact Information">معلومات التواصل</h3>
+                <p data-ar="لا تتردد في التواصل معنا لأي استفسار أو مساعدة"
+                   data-en="Feel free to contact us for any inquiry or assistance">
+                    لا تتردد في التواصل معنا لأي استفسار أو مساعدة
+                </p>
+
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <strong data-ar="العنوان" data-en="Address">العنوان</strong>
+                        <p data-ar="السيوف " data-en="AL-soufe , Abdul Razzaq Al-Sanhuri Street">
+                            السيوف  شارع عبد الرزاق السنهوري 
+                        </p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <strong data-ar="الهاتف" data-en="Phone">الهاتف</strong>
+                        <p>01208477527</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <strong data-ar="البريد الإلكتروني" data-en="Email">البريد الإلكتروني</strong>
+                        <p>shohnaexpress@gmail.com</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <strong data-ar="ساعات العمل" data-en="Working Hours">ساعات العمل</strong>
+                        <p data-ar="السبت - الخميس: 8 ص - 10 م" data-en="Sat - Thu: 8 AM - 10 PM">
+                            السبت - الخميس: 8 ص - 10 م
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <form class="contact-form" onsubmit="handleSubmit(event, 'contact')">
+                <div class="form-group">
+                    <label data-ar="الاسم الكامل" data-en="Full Name">الاسم الكامل</label>
+                    <input type="text" required placeholder="" data-ar-placeholder="أدخل اسمك" data-en-placeholder="Enter your name">
+                </div>
+
+                <div class="form-group">
+                    <label data-ar="البريد الإلكتروني" data-en="Email">البريد الإلكتروني</label>
+                    <input type="email" required placeholder="" data-ar-placeholder="أدخل بريدك الإلكتروني" data-en-placeholder="Enter your email">
+                </div>
+
+                <div class="form-group">
+                    <label data-ar="رقم الهاتف" data-en="Phone Number">رقم الهاتف</label>
+                    <input type="tel" placeholder="" data-ar-placeholder="أدخل رقم هاتفك" data-en-placeholder="Enter your phone">
+                </div>
+
+                <div class="form-group">
+                    <label data-ar="الرسالة" data-en="Message">الرسالة</label>
+                    <textarea rows="4" required placeholder="" data-ar-placeholder="اكتب رسالتك هنا..." data-en-placeholder="Write your message here..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    <span class="btn-text" data-ar="إرسال الرسالة" data-en="Send Message">إرسال الرسالة</span>
+                    <div class="loader"></div>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Feedback Section -->
+    <section id="feedback" class="feedback-section">
+        <div class="section-title">
+            <h2 data-ar="مقترحات وشكاوي" data-en="Suggestions & Complaints">مقترحات وشكاوي</h2>
+            <p data-ar="صوتك يهمنا! ساعدنا في التحسن المستمر" 
+               data-en="Your voice matters! Help us improve continuously">
+                صوتك يهمنا! ساعدنا في التحسن المستمر
+            </p>
+        </div>
+
+        <div class="feedback-tabs">
+            <button class="tab-btn active" onclick="switchTab('suggestion')" data-ar="مقترح" data-en="Suggestion">
+                <i class="fas fa-lightbulb"></i> مقترح
+            </button>
+            <button class="tab-btn" onclick="switchTab('complaint')" data-ar="شكوى" data-en="Complaint">
+                <i class="fas fa-exclamation-circle"></i> شكوى
+            </button>
+        </div>
+
+        <form class="feedback-form" id="feedbackForm" onsubmit="handleSubmit(event, 'feedback')">
+            <div class="form-group">
+                <label data-ar="نوع التعليق" data-en="Feedback Type">نوع التعليق</label>
+                <select id="feedbackType" onchange="updateFeedbackType()">
+                    <option value="suggestion" data-ar="مقترح" data-en="Suggestion">مقترح</option>
+                    <option value="complaint" data-ar="شكوى" data-en="Complaint">شكوى</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label data-ar="رقم الشحنة (اختياري)" data-en="Shipment Number (Optional)">رقم الشحنة (اختياري)</label>
+                <input type="text" placeholder="" data-ar-placeholder="مثال: SH-123456" data-en-placeholder="e.g., SH-123456">
+            </div>
+
+            <div class="form-group">
+                <label data-ar="التفاصيل" data-en="Details">التفاصيل</label>
+                <textarea rows="5" required placeholder="" 
+                    data-ar-placeholder="اشرح مقترحك أو شكواك بالتفصيل..." 
+                    data-en-placeholder="Explain your suggestion or complaint in detail..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label data-ar="الأولوية" data-en="Priority">الأولوية</label>
+                <select>
+                    <option value="low" data-ar="منخفضة" data-en="Low">منخفضة</option>
+                    <option value="medium" data-ar="متوسطة" data-en="Medium">متوسطة</option>
+                    <option value="high" data-ar="عالية" data-en="High">عالية</option>
+                </select>
+            </div>
+
+            <button type="submit" class="submit-btn">
+                <span class="btn-text" data-ar="إرسال" data-en="Submit">إرسال</span>
+                <div class="loader"></div>
+            </button>
+        </form>
+    </section>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="modal-header">
+                <h2 data-ar="تسجيل الدخول" data-en="Login">تسجيل الدخول</h2>
+                <p data-ar="أهلاً بك مجدداً في شحنة اكسبريس" data-en="Welcome back to Shohna Express">
+                    أهلاً بك مجدداً في شحنة اكسبريس
+                </p>
+            </div>
+
+            <div class="social-login">
+                <button class="social-btn">
+                    <i class="fab fa-google"></i>
+                    <span>Google</span>
+                </button>
+                <button class="social-btn">
+                    <i class="fab fa-facebook-f"></i>
+                    <span>Facebook</span>
+                </button>
+            </div>
+
+            <div class="divider" data-ar="أو" data-en="OR">أو</div>
+
+            <form onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label data-ar="البريد الإلكتروني أو رقم الهاتف" data-en="Email or Phone">البريد الإلكتروني أو رقم الهاتف</label>
+                    <input type="text" required>
+                </div>
+
+                <div class="form-group">
+                    <label data-ar="كلمة المرور" data-en="Password">كلمة المرور</label>
+                    <input type="password" required>
+                </div>
+
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                    <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                        <input type="checkbox">
+                        <span style="font-size: 0.9rem; color: var(--gray);" data-ar="تذكرني" data-en="Remember me">تذكرني</span>
+                    </label>
+                    <a href="#" style="font-size: 0.9rem; color: var(--primary); text-decoration: none;" 
+                       data-ar="نسيت كلمة المرور؟" data-en="Forgot password?">نسيت كلمة المرور؟</a>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    <span class="btn-text" data-ar="تسجيل الدخول" data-en="Login">تسجيل الدخول</span>
+                    <div class="loader"></div>
+                </button>
+            </form>
+
+            <p style="text-align: center; margin-top: 1.5rem; color: var(--gray);">
+                <span data-ar="ليس لديك حساب؟" data-en="Don't have an account?">ليس لديك حساب؟</span>
+                <a href="#" style="color: var(--primary); text-decoration: none; font-weight: 600;" 
+                   data-ar="سجل الآن" data-en="Register now">سجل الآن</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastMessage">تم الإرسال بنجاح!</span>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3>شحنة اكسبريس</h3>
+                <p data-ar="شريكك الموثوق في خدمات الشحن والتوصيل السريع في جميع أنحاء مصر."
+                   data-en="Your trusted partner in shipping and fast delivery services throughout Egypt.">
+                    شريكك الموثوق في خدمات الشحن والتوصيل السريع في جميع أنحاء مصر.
+                </p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/shohnaexpress?igsh=d2FnZTdnOWF1NTdi&utm_source=qr"><i class="fab fa-instagram"></i></a>
+                    <a href="www.tiktok.com/@shohnaexpress"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://wa.me/qr/XSIF4PCZZJHRM1"><i class="fab fa-whatsapp"></i></a>
+
+                    
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h3 data-ar="روابط سريعة" data-en="Quick Links">روابط سريعة</h3>
+                <ul class="footer-links">
+                    <li><a href="#about"><i class="fas fa-chevron-right"></i> <span data-ar="عن الشركة" data-en="About Company">عن الشركة</span></a></li>
+                    <li><a href="#services"><i class="fas fa-chevron-right"></i> <span data-ar="خدماتنا" data-en="Our Services">خدماتنا</span></a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> <span data-ar="تتبع الشحنة" data-en="Track Shipment">تتبع الشحنة</span></a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> <span data-ar="الأسعار" data-en="Pricing">الأسعار</span></a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3 data-ar="الدعم" data-en="Support">الدعم</h3>
+                <ul class="footer-links">
+                    <li><a href="#contact"><i class="fas fa-chevron-right"></i> <span data-ar="مركز المساعدة" data-en="Help Center">مركز المساعدة</span></a></li>
+                    <li><a href="#feedback"><i class="fas fa-chevron-right"></i> <span data-ar="الشكاوى" data-en="Complaints">الشكاوى</span></a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> <span data-ar="الشروط والأحكام" data-en="Terms & Conditions">الشروط والأحكام</span></a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> <span data-ar="سياسة الخصوصية" data-en="Privacy Policy">سياسة الخصوصية</span></a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3 data-ar="النشرة البريدية" data-en="Newsletter">النشرة البريدية</h3>
+                <p data-ar="اشترك للحصول على أحدث العروض والأخبار"
+                   data-en="Subscribe to get the latest offers and news">
+                    اشترك للحصول على أحدث العروض والأخبار
+                </p>
+                <form style="margin-top: 1rem;">
+                    <input type="email" placeholder="Email" style="padding: 0.8rem; border-radius: 8px; border: none; width: 100%; margin-bottom: 0.5rem;">
+                    <button class="submit-btn" style="padding: 0.8rem;" data-ar="اشتراك" data-en="Subscribe">اشتراك</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 شحنة اكسبريس | Shohna Express. <span data-ar="جميع الحقوق محفوظة" data-en="All rights reserved">جميع الحقوق محفوظة</span></p>
+        </div>
+    </footer>
+
+    <script>
+        // Language Toggle
+        let currentLang = 'ar';
+        
+        function toggleLanguage() {
+            currentLang = currentLang === 'ar' ? 'en' : 'ar';
+            document.body.classList.toggle('ltr');
+            document.body.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+            
+            // Update all elements with data attributes
+            document.querySelectorAll('[data-ar][data-en]').forEach(el => {
+                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                    el.placeholder = el.getAttribute(`data-${currentLang}-placeholder`) || 
+                                   el.getAttribute(`data-${currentLang}`);
+                } else {
+                    el.textContent = el.getAttribute(`data-${currentLang}`);
+                }
+            });
+
+            // Update lang button
+            document.getElementById('langText').textContent = currentLang === 'ar' ? 'English' : 'العربية';
+            
+            // Update select options
+            document.querySelectorAll('select').forEach(select => {
+                Array.from(select.options).forEach(option => {
+                    if (option.hasAttribute('data-ar')) {
+                        option.textContent = option.getAttribute(`data-${currentLang}`);
+                    }
+                });
+            });
+        }
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Modal Functions
+        function openModal() {
+            document.getElementById('loginModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('loginModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal on outside click
+        document.getElementById('loginModal').addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) closeModal();
+        });
+
+        // Feedback Tabs
+        function switchTab(type) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            document.getElementById('feedbackType').value = type;
+        }
+
+        function updateFeedbackType() {
+            const type = document.getElementById('feedbackType').value;
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.textContent.toLowerCase().includes(type) || 
+                    (type === 'suggestion' && btn.innerHTML.includes('lightbulb')) ||
+                    (type === 'complaint' && btn.innerHTML.includes('exclamation'))) {
+                    btn.classList.add('active');
+                }
+            });
+        }
+
+        // Form Submissions
+        function handleSubmit(e, type) {
+            e.preventDefault();
+            const btn = e.target.querySelector('.submit-btn');
+            btn.classList.add('loading');
+            
+            setTimeout(() => {
+                btn.classList.remove('loading');
+                showToast(currentLang === 'ar' ? 'تم الإرسال بنجاح!' : 'Sent successfully!');
+                e.target.reset();
+            }, 1500);
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('.submit-btn');
+            btn.classList.add('loading');
+            
+            setTimeout(() => {
+                btn.classList.remove('loading');
+                closeModal();
+                showToast(currentLang === 'ar' ? 'تم تسجيل الدخول بنجاح!' : 'Login successful!');
+            }, 1500);
+        }
+
+        // Toast Notification
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMessage').textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+
+        // Mobile Menu
+        function toggleMobileMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements
+        document.querySelectorAll('.service-card, .feature-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
